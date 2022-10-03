@@ -23,7 +23,7 @@ header {
     border-style: double;
 }
 
-#start-button {
+.start-button {
     padding: 1%;
     margin: 2%;
     font-size: larger;
@@ -32,6 +32,7 @@ header {
     border: 5px white;
     border-style:inset;
 }
+
 
 main {
     display: flex;
@@ -67,6 +68,7 @@ section {
 }
 
 
+/*add hover to start*/
 
   
 
