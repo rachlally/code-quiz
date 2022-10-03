@@ -58,6 +58,11 @@ section {
     justify-content: space-around;
 }
 
+.box h2 {
+    font-size: large;
+    justify-content: center;
+}
+
 .game {
     width: 60%;
     height: 350px;
