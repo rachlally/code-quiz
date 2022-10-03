@@ -8,42 +8,31 @@
 // Game ends when all questions are answered or clocks reaches 0
 // Game wins and losses are tallied, saved in localStorage, and rendered on page
 
-var questionEl = document.querySelector("")
+//var questionEl = document.querySelector("")
 var timerEl = document.querySelector(".timer");
 var startButton = document.querySelector(".start-button");
 
 //array of questions user will be asked:
 var quizQuestion = []
 
-var secondsLeft = 100;
+var secondsLeft = 60;
 
 //Start button event, game questions appear and timer starts
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", countdown);
 
 //game function
-function startGame () {
+/*function startGame () {
     timerCount = ;
     startButton.disabled = true;
     renderQuestions()
     startTimer()
     
-}
+}*/
 
 //timer
-function startTimer () {
-    var timeStart = function setInterval() {
+function countdown () {
+    var timeInterval = setInterval(function () {
         secondsLeft--;
-        timerE1.textContent = secondsLeft;
-
-    }
-    
-
-//function startGame() {
-    isWin = false;
-    timerCount = 10;
-    startButton.disabled = true;
-    renderBlanks()
-    startTimer()
-  //}
-  
-
+        timerEl.textContent = secondsLeft;
+    }, 1000);
+}
