@@ -2,47 +2,50 @@
 // There is a start button, yes!
 // Listen for the start button click, yes!
 // When start clicked, a timer starts counting down for 60 seconds, yes!
-// When clicked, first question displays with four possible answers
+// When clicked, first question displays with four possible answers, yes!
 // Correct answer, next question
 // Incorrect answer, time subtracted
 // Game ends when all questions are answered or clocks reaches 0
 // Game wins and losses are tallied, saved in localStorage, and rendered on page
 
-var timerEl = document.querySelector(".timer-display");
-var startButton = document.querySelector(".start-button");
-var questionBox = document.querySelector(".questions");
-var choiceBox = document.querySelector(".choices");
+var timerEl = document.querySelector("#timer-display");
+var startButton = document.querySelector("#start-button");
+var questionBox = document.querySelector("#questions");
 
-//Array for chosen question
-var chosenQuestion = "";
+var choice1 = document.querySelector("#choices1");
+var choice2 = document.querySelector("#choices2");
+var choice3 = document.querySelector("#choices3");
+var choice4 = document.querySelector("#choices4");
+var choiceButton = document.querySelector("choice-button");
+
 
 //variable to keep track of score
 var score = 0;
 
 var secondsLeft = 30;
 
-//create an object for quiz questions, answers, and correct answer
-quiz = {
+//create an array for quiz questions, answers, and correct answer
+var quiz = [
 
-    question1:{
+    {
         question:'The first JackOLanterns were made from',
         answers: ['pumpkins', 'carrots', 'turnips', 'potatoes'],
         correct: 'turnips',
     },
 
-    question2: {
+    {
         question: 'The fear of Halloween is:',
         answers: ['Skellophobia', 'Hallowphobia', 'Wiccaphobia', 'Samhainophobia'],
         correct: 'Samhainophobia',
     },
 
-    question3: {
+    {
         question: 'What city holds the record for most JackoLanterns lit at once? (30,128!)',
         answers: ['Toronto', 'Boston', 'San Francisco', 'Philadelphia'],
         correct: 'Boston',
     },
 
-};
+];
 console.log(quiz);
 
 //game function starts when start button clicked
@@ -51,30 +54,22 @@ function startGame () {
     startButton.disabled = true;
     renderQuestion()
     countdown()
+    console.log('on click')
     
 }
 
-function renderQuestion () {
-    var chosenQuestion = quiz(question1.question);
-    var choices = quiz(question1.answers);
+var index = 0
+
+function renderQuestion() {
+    var chosenQuestion = quiz[index].question
     questionBox.textContent = chosenQuestion;
-    choiceBox.textContent = choices;
+    choice1.textContent = quiz[index].answers[0]
+    choice2.textContent = quiz[index].answers[1]
+    choice3.textContent = quiz[index].answers[2]
+    choice4.textContent = quiz[index].answers[3]
+    
 }
 
-/*function renderQuestion (){
-    chosenQuestion = quiz[0];
-    var questionText = chosenQuestion.question;
-    var optionsText = chosenQuestion.options;
-    questionBox.textContent(questionText);
-    choiceBox.textContent = optionsText;
-}
-//generate question and render to page
-function renderQuestion (){
-    chosenQuestion = quiz[0];
-    var questionText = chosenQuestion.question;
-    questionBox.textContent = questionText;
-    var choiceText = chosenQuestion.options;
-    choiceBox.textContent = quizQuestion.options;*/
 
    /*for (var i = 0; i < choices.length; i++) {
         var currentAnswer = quiz.options[i];
@@ -82,34 +77,8 @@ function renderQuestion (){
         var isCorrectAnswer = currentAnswer.isCorrect
         var choiceElement = document.createElement('p');
         choiceElement.textContent = currentAnswerText;
-        choiceElement.dataset.isCorrect = isCorrectAnswer;
-    }
-    /*chosenQuestion = quizQuestion[1];
-    var questionText = chosenQuestion.q;
-    var choiceText = chosenQuestion.a;
-    questionBox.textContent = questionText;
-
-    for (var i = 0; i < answers.length; i++) {
-        var currentAnswer = answers[i];
-        var currentAnswerText = currentAnswer.text
-        var isCorrectAnswer = currentAnswer.isCorrect
-        var choiceElement = document.createElement('p');
-        choiceElement.textContent = currentAnswerText;
-        choiceElement.dataset.isCorrect = isCorrectAnswer;
-    }
-    chosenQuestion = quizQuestion[2];
-    var questionText = chosenQuestion.q;
-    var answers = chosenQuestion.a;
-    questionBox.textContent = questionText;
-
-    for (var i = 0; i < answers.length; i++) {
-        var currentAnswer = answers[i];
-        var currentAnswerText = currentAnswer.text
-        var isCorrectAnswer = currentAnswer.isCorrect
-        var choiceElement = document.createElement('p');
-        choiceElement.textContent = currentAnswerText;
-        choiceElement.dataset.isCorrect = isCorrectAnswer;
-    }*/
+        choiceElement.dataset.isCorrect = isCorrectAnswer;*/
+   
    
     
 
@@ -120,9 +89,9 @@ function correctAnswer (){
     }
     
 
-
+}
 //timer function
-function countdown () {
+function countdown() {
     var timeInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
@@ -137,4 +106,4 @@ function countdown () {
 //Start button event, game questions appear and timer starts
 startButton.addEventListener("click", startGame);
 
-}
+
