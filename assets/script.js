@@ -1,7 +1,7 @@
 // There is a page title, yes!
 // There is a start button, yes!
 // Listen for the start button click, yes!
-// When start clicked, a timer starts counting down for 30 seconds, yes!
+// When start clicked, a timer starts counting down for 60 seconds, yes!
 // When clicked, first question displays with four possible answers
 // Correct answer, next question
 // Incorrect answer, time subtracted
@@ -11,6 +11,7 @@
 var timerEl = document.querySelector(".timer-display");
 var startButton = document.querySelector(".start-button");
 var questionBox = document.querySelector(".questions");
+var choiceBox = document.querySelector(".choices");
 
 //Array for chosen question
 var chosenQuestion = "";
@@ -20,48 +21,75 @@ var score = 0;
 
 var secondsLeft = 30;
 
-//questions user will be asked:
-var quizQuestion = [
+//create an object for quiz questions, answers, and correct answer
+quiz = {
 
-    {q: "The first JackOLanterns were made from:", options: ["pumpkins", "carrots", "turnips", "potatoes"], answer: "turnips"},
+    question1:{
+        question:'The first JackOLanterns were made from',
+        answers: ['pumpkins', 'carrots', 'turnips', 'potatoes'],
+        correct: 'turnips',
+    },
 
-    {q: "The fear of Halloween is:", options: ["Skellophobia", "Hallowphobia", "Wiccaphobia", "Samhainophobia"], answer: "Samhainophobia"},
+    question2: {
+        question: 'The fear of Halloween is:',
+        answers: ['Skellophobia', 'Hallowphobia', 'Wiccaphobia', 'Samhainophobia'],
+        correct: 'Samhainophobia',
+    },
 
-    {q: "What city holds the record for most JackoLanterns lit at once? (30,128!)", options: ["Toronto", "Boston", "San Francisco", "Philadelphia"], answer: "Boston"},
-];
+    question3: {
+        question: 'What city holds the record for most JackoLanterns lit at once? (30,128!)',
+        answers: ['Toronto', 'Boston', 'San Francisco', 'Philadelphia'],
+        correct: 'Boston',
+    },
 
+};
+console.log(quiz);
 
 //game function starts when start button clicked
 function startGame () {
-    timerCount = 15;
+    timerCount = 30;
     startButton.disabled = true;
     renderQuestion()
     countdown()
     
-    
 }
 
+function renderQuestion () {
+    var chosenQuestion = quiz(question1.question);
+    var choices = quiz(question1.answers);
+    questionBox.textContent = chosenQuestion;
+    choiceBox.textContent = choices;
+}
+
+/*function renderQuestion (){
+    chosenQuestion = quiz[0];
+    var questionText = chosenQuestion.question;
+    var optionsText = chosenQuestion.options;
+    questionBox.textContent(questionText);
+    choiceBox.textContent = optionsText;
+}
 //generate question and render to page
 function renderQuestion (){
-    chosenQuestion = quizQuestion[0];
-    var questionText = chosenQuestion.q;
+    chosenQuestion = quiz[0];
+    var questionText = chosenQuestion.question;
     questionBox.textContent = questionText;
-    questionBox.textContent = quizQuestion.options;
+    var choiceText = chosenQuestion.options;
+    choiceBox.textContent = quizQuestion.options;*/
 
-   for (var i = 0; i < answers.length; i++) {
-        var currentAnswer = answers[i];
+   /*for (var i = 0; i < choices.length; i++) {
+        var currentAnswer = quiz.options[i];
         var currentAnswerText = currentAnswer.text
         var isCorrectAnswer = currentAnswer.isCorrect
         var choiceElement = document.createElement('p');
         choiceElement.textContent = currentAnswerText;
         choiceElement.dataset.isCorrect = isCorrectAnswer;
     }
-    chosenQuestion = quizQuestion[1];
+    /*chosenQuestion = quizQuestion[1];
     var questionText = chosenQuestion.q;
-    var answerText = chosenQuestion.a;
+    var choiceText = chosenQuestion.a;
     questionBox.textContent = questionText;
 
-   /* for (var i = 0; i < answers.length; i++) {
+    for (var i = 0; i < answers.length; i++) {
         var currentAnswer = answers[i];
         var currentAnswerText = currentAnswer.text
         var isCorrectAnswer = currentAnswer.isCorrect
@@ -84,12 +112,13 @@ function renderQuestion (){
     }*/
    
     
-}
+
 
 function correctAnswer (){
     if (isCorrect == true) {
         result
     }
+    
 
 
 //timer function
