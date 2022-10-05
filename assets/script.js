@@ -16,7 +16,7 @@ var choice1 = document.querySelector("#choices1");
 var choice2 = document.querySelector("#choices2");
 var choice3 = document.querySelector("#choices3");
 var choice4 = document.querySelector("#choices4");
-var choiceButton = document.querySelector(".choice-button");
+var choiceButton = document.getElementsByClassName(".choice-button");
 
 var right = 0;
 var wrong = 0;
@@ -53,61 +53,94 @@ console.log(quiz);
 
 //game function starts when start button clicked
 function startGame () {
+    index = 0;
     timerCount = 30;
     startButton.disabled = true;
     renderQuestion()
+    addEventListener()
     countdown()
     console.log('playing!')
 
-    //click event for each button 
-    choice1.addEventListener("click", function(event) {
-        var chosenAnswer = event.target;
-        console.log(chosenAnswer.textContent);
-        if (chosenAnswer.textContent === quiz[index].correct) {
-        console.log('correct!');
-    } else {
-        console.log('wrong');
-    }})
-    choice2.addEventListener("click", function(event) {
-        var chosenAnswer = event.target;
-        console.log(chosenAnswer.textContent);
-        if (chosenAnswer.textContent === quiz[index].correct) {
-        console.log('correct!');
-    } else {
-        console.log('wrong');
-    }})
-    choice3.addEventListener("click", function(event) {
-        var chosenAnswer = event.target;
-        console.log(chosenAnswer.textContent);
-        if (chosenAnswer.textContent === quiz[index].correct) {
-        console.log('correct!');
-    } else {
-        console.log('wrong');
-    }})
-    choice4.addEventListener("click", function(event) {
-        var chosenAnswer = event.target;
-        console.log(chosenAnswer.textContent);
-        if (chosenAnswer.textContent === quiz[index].correct) {
-        console.log('correct!');
-    } else {
-        console.log('wrong');
-    }})
-    
-    if (chosenAnswer === quiz[index].correct) {
-            right++;
-            
-    } else {
-            wrong++;
-            console.log("Wrong!");
-    }};
-    
-    /* else {
+}
 
-        for (index = 0; index < choice.length; index++) {
+
+//click event for each button 
+function addEventListener (){
+
+    choice1.addEventListener("click", function(event) {
+            var chosenAnswer = event.target;
+            console.log(chosenAnswer.textContent);
+
+            if (chosenAnswer.textContent === quiz[index].correct) {
+            console.log('correct!');
+            } else {
+            console.log('wrong');
+            secondsLeft-=5;
+            
+            }
+
+            index++;
+            renderQuestion();
+            
+        }
+    );
+
+
+    choice2.addEventListener("click", function(event) {
+            var chosenAnswer = event.target;
+            console.log(chosenAnswer.textContent);
+            
+            if (chosenAnswer.textContent === quiz[index].correct) {
+            console.log('correct!');
+            } else {
+            console.log('wrong');
+            secondsLeft-=5;
+            }
+        
+            index++;
+            renderQuestion();
 
         }
-    } */
-    
+    );
+
+
+    choice3.addEventListener("click", function(event) {
+            var chosenAnswer = event.target;
+            console.log(chosenAnswer.textContent);
+            
+            if (chosenAnswer.textContent === quiz[index].correct) {
+            console.log('correct!');
+            } else {
+            console.log('wrong');
+            secondsLeft-=5;
+            }
+
+            index++;
+            renderQuestion();
+
+        }
+    );
+
+
+    choice4.addEventListener("click", function(event) {
+            var chosenAnswer = event.target;
+            console.log(chosenAnswer.textContent);
+            
+            if (chosenAnswer.textContent === quiz[index].correct) {
+            console.log('correct!');
+            } else {
+            console.log('wrong');
+            secondsLeft-=5;
+            }
+
+            index++;
+            renderQuestion();
+
+        }
+    );
+}
+ 
+               
 var index = 0
 
 function renderQuestion() {
