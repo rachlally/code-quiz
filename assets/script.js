@@ -16,7 +16,10 @@ var choice1 = document.querySelector("#choices1");
 var choice2 = document.querySelector("#choices2");
 var choice3 = document.querySelector("#choices3");
 var choice4 = document.querySelector("#choices4");
-var choiceButton = document.querySelector("choice-button");
+var choiceButton = document.querySelector(".choice-button");
+
+var right = 0;
+var wrong = 0;
 
 
 //variable to keep track of score
@@ -55,44 +58,46 @@ function startGame () {
     renderQuestion()
     countdown()
     console.log('on click')
+
+    choiceButton.addEventListener("click", function(event) {
+        var chosenAnswer = event.target;
+        console.log(chosenAnswer);
+    if (chosenAnswer == quiz[index].correct) {
+            right++;
+            console.log("Correct!");
+    } else if {
+            wrong++;
+            console.log("Wrong!");
+    }};
     
-}
+    /* else {
+
+        for (index = 0; index < quiz.length; index++) {
+
+        }
+    } */
+    
+
+    
+    
 
 var index = 0
 
 function renderQuestion() {
-    var chosenQuestion = quiz[index].question
+    var chosenQuestion = quiz[index].question;
     questionBox.textContent = chosenQuestion;
-    choice1.textContent = quiz[index].answers[0]
-    choice2.textContent = quiz[index].answers[1]
-    choice3.textContent = quiz[index].answers[2]
-    choice4.textContent = quiz[index].answers[3]
-    
+    choice1.textContent = quiz[index].answers[0];
+    choice2.textContent = quiz[index].answers[1];
+    choice3.textContent = quiz[index].answers[2];
+    choice4.textContent = quiz[index].answers[3];
 }
 
-
-   /*for (var i = 0; i < choices.length; i++) {
-        var currentAnswer = quiz.options[i];
-        var currentAnswerText = currentAnswer.text
-        var isCorrectAnswer = currentAnswer.isCorrect
-        var choiceElement = document.createElement('p');
-        choiceElement.textContent = currentAnswerText;
-        choiceElement.dataset.isCorrect = isCorrectAnswer;*/
-   
-   
     
 
 
-function correctAnswer (){
-    if (isCorrect == true) {
-        result
-    }
-    
-
-}
 //timer function
 function countdown() {
-    var timeInterval = setInterval(function () {
+    var timeInterval = setInterval(function () 
         secondsLeft--;
         timerEl.textContent = secondsLeft;
         console.log('timer!')
@@ -101,9 +106,7 @@ function countdown() {
         clearInterval(timeInterval);
     }
 }, 1000);
-}
+
 
 //Start button event, game questions appear and timer starts
 startButton.addEventListener("click", startGame);
-
-
