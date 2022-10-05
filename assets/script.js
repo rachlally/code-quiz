@@ -57,30 +57,57 @@ function startGame () {
     startButton.disabled = true;
     renderQuestion()
     countdown()
-    console.log('on click')
+    console.log('playing!')
 
-    choiceButton.addEventListener("click", function(event) {
+    //click event for each button 
+    choice1.addEventListener("click", function(event) {
         var chosenAnswer = event.target;
-        console.log(chosenAnswer);
-    if (chosenAnswer == quiz[index].correct) {
+        console.log(chosenAnswer.textContent);
+        if (chosenAnswer.textContent === quiz[index].correct) {
+        console.log('correct!');
+    } else {
+        console.log('wrong');
+    }})
+    choice2.addEventListener("click", function(event) {
+        var chosenAnswer = event.target;
+        console.log(chosenAnswer.textContent);
+        if (chosenAnswer.textContent === quiz[index].correct) {
+        console.log('correct!');
+    } else {
+        console.log('wrong');
+    }})
+    choice3.addEventListener("click", function(event) {
+        var chosenAnswer = event.target;
+        console.log(chosenAnswer.textContent);
+        if (chosenAnswer.textContent === quiz[index].correct) {
+        console.log('correct!');
+    } else {
+        console.log('wrong');
+    }})
+    choice4.addEventListener("click", function(event) {
+        var chosenAnswer = event.target;
+        console.log(chosenAnswer.textContent);
+        if (chosenAnswer.textContent === quiz[index].correct) {
+        console.log('correct!');
+    } else {
+        console.log('wrong');
+    }})
+    
+    if (chosenAnswer === quiz[index].correct) {
             right++;
-            console.log("Correct!");
-    } else if {
+            
+    } else {
             wrong++;
             console.log("Wrong!");
     }};
     
     /* else {
 
-        for (index = 0; index < quiz.length; index++) {
+        for (index = 0; index < choice.length; index++) {
 
         }
     } */
     
-
-    
-    
-
 var index = 0
 
 function renderQuestion() {
@@ -91,13 +118,10 @@ function renderQuestion() {
     choice3.textContent = quiz[index].answers[2];
     choice4.textContent = quiz[index].answers[3];
 }
-
-    
-
-
+ 
 //timer function
 function countdown() {
-    var timeInterval = setInterval(function () 
+    var timeInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft;
         console.log('timer!')
@@ -107,6 +131,6 @@ function countdown() {
     }
 }, 1000);
 
-
+}
 //Start button event, game questions appear and timer starts
 startButton.addEventListener("click", startGame);
